@@ -47,10 +47,16 @@ const state = {
 const TOTAL_SLIDES = 8;
 
 // Initialize App
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   renderApp();
   setupKeyboardListeners();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 
 function setupKeyboardListeners() {
   document.addEventListener('keydown', (e) => {
