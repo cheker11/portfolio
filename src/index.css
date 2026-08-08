@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-syne {
+    font-family: 'Syne', sans-serif;
+  }
+  .font-tenor {
+    font-family: 'Tenor Sans', sans-serif;
+  }
+  .font-italiana {
+    font-family: 'Italiana', serif;
+  }
+  .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .font-sans {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .text-outline-dark {
+    color: transparent;
+    -webkit-text-stroke: 1.2px #1A1A1A;
+  }
+  .text-outline-light {
+    color: transparent;
+    -webkit-text-stroke: 1.2px #8C877D;
+  }
+  .text-outline-thick {
+    color: transparent;
+    -webkit-text-stroke: 1.8px #1A1A1A;
+  }
+}
+
+/* Custom Editorial Scrollbar & Smooth Transitions */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #E8E4D9;
+}
+::-webkit-scrollbar-thumb {
+  background: #1A1A1A;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D43F3A;
+}
+
+/* Image frame oval and arch shapes matching presentation slides */
+.shape-oval {
+  border-radius: 50%;
+}
+.shape-arch {
+  border-radius: 120px 120px 0 0;
+}
+.shape-pill {
+  border-radius: 9999px;
+}
+
