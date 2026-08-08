@@ -1,7 +1,7 @@
 export const PERSONAL_INFO = {
   name: "Arina Chekotun",
   title: "IT Developer, Startup Founder & Web Designer",
-  location: "Kherson City (currently in Odesa, Ukraine)",
+  location: "Kherson / Odesa, Ukraine",
   birthDate: "April 11, 2008",
   gender: "Female",
   nationality: "Ukrainian",
@@ -10,8 +10,8 @@ export const PERSONAL_INFO = {
   github: "https://github.com",
   linkedin: "https://linkedin.com",
   instagram: "https://instagram.com/11_cheker_11",
-  bio: "Purposeful, persistent, open to new knowledge, proactive, and creative. Passionate about information technologies and web design with developments in websites, games, ad banners, presentations, and logos. Author of courses and a learning platform for computer science beginners, and founder of an IT startup. Striving for continuous growth and technological innovation.",
-  availability: "Open for Collaborations, Startups & Tech Projects",
+  bio: "Purposeful, persistent, open to new knowledge, proactive, and creative. IT Developer, Founder, and Designer building innovative products in the EdTech and PetTech sectors. Creator of educational computer science courses, interactive learning platforms, and pet care tech solutions alongside custom web design, ad banners, and logos.",
+  availability: "Open for EdTech & PetTech Collaborations, Startups & Tech Projects",
   experienceYears: "3+ Years",
   shippedProjects: "15+ Projects",
   targetEmail: "11cheker11@gmail.com",
@@ -20,8 +20,8 @@ export const PERSONAL_INFO = {
     { name: "English", level: "B1 Confirmed (Moving to B2)" }
   ],
   traits: [
-    "Purposeful & Persistent",
-    "Open to New Knowledge",
+    "EdTech & PetTech Founder",
+    "IT Developer & Web Designer",
     "Proactive & Leadership-Oriented",
     "Creative & Innovative Mindset"
   ]
@@ -30,13 +30,13 @@ export const PERSONAL_INFO = {
 export const MISSION_PILLARS = [
   {
     number: "01",
-    title: "Innovating Through Technology",
-    description: "Developing modern web solutions, AI chatbots, and software applications that solve real-world problems and empower users."
+    title: "Innovating in EdTech & PetTech",
+    description: "Developing modern web products, interactive educational platforms, and smart pet care technology solutions that solve real everyday problems."
   },
   {
     number: "02",
     title: "Empowering Beginners in IT",
-    description: "Authoring accessible courses and interactive learning platforms for computer science newcomers to build confidence and practical skills."
+    description: "Authoring accessible courses and learning platforms for computer science newcomers to build confidence, practical skills, and tech literacy."
   },
   {
     number: "03",

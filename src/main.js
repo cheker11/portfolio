@@ -114,98 +114,101 @@ function renderApp() {
 // --------------------------------------------------
 function renderHeader() {
   return `
-    <header class="sticky top-0 z-40 bg-[#F4F1EA]/90 backdrop-blur-md border-b-2 border-[#1A1A1A] px-4 sm:px-8 py-3 transition-all">
-      <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <header class="sticky top-0 z-40 bg-[#F4F1EA]/95 backdrop-blur-md border-b-2 border-[#1A1A1A] px-3 sm:px-6 py-2.5 transition-all w-full overflow-x-clip">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 lg:gap-4">
         
         <!-- Logo / Name -->
-        <a href="#hero" id="nav-logo" class="flex items-center gap-3 group">
-          <div class="w-9 h-9 bg-[#1A1A1A] text-[#F4F1EA] font-serif italic text-xl font-bold flex items-center justify-center border border-[#1A1A1A] group-hover:bg-[#D43F3A] group-hover:text-white transition-colors">
+        <a href="#hero" id="nav-logo" class="flex items-center gap-2.5 group shrink-0">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 bg-[#1A1A1A] text-[#F4F1EA] font-serif italic text-lg sm:text-xl font-bold flex items-center justify-center border border-[#1A1A1A] group-hover:bg-[#D43F3A] group-hover:text-white transition-colors">
             AC
           </div>
           <div>
-            <span class="font-serif italic text-lg font-bold tracking-tight text-[#1A1A1A] block leading-none">
+            <span class="font-serif italic text-base sm:text-lg font-bold tracking-tight text-[#1A1A1A] block leading-none">
               Arina Chekotun
             </span>
-            <span class="text-[10px] font-bold text-[#D43F3A] uppercase tracking-[0.2em] block mt-0.5">
-              IT Developer & Founder
+            <span class="text-[9px] sm:text-[10px] font-bold text-[#D43F3A] uppercase tracking-[0.15em] block mt-0.5">
+              IT Developer | Founder | Designer
             </span>
           </div>
         </a>
 
-        <!-- Desktop Navigation & Controls -->
-        <div class="hidden md:flex items-center gap-6 text-xs font-bold uppercase tracking-[0.15em]">
+        <!-- Desktop Navigation & Controls (Visible on lg: and above) -->
+        <div class="hidden lg:flex items-center gap-2 xl:gap-4 text-[11px] font-bold uppercase tracking-[0.1em] shrink-0">
           
           ${state.viewMode === 'website' ? `
-            <nav class="flex items-center gap-5 text-[#1A1A1A]/80">
-              <a href="#about" class="hover:text-[#D43F3A] transition-colors">About</a>
-              <a href="#skills" class="hover:text-[#D43F3A] transition-colors">Skills</a>
-              <a href="#projects" class="hover:text-[#D43F3A] transition-colors">Projects</a>
-              <a href="#achievements" class="hover:text-[#D43F3A] transition-colors">Achievements</a>
-              <a href="#credentials" class="hover:text-[#D43F3A] transition-colors">Education</a>
-              <a href="#contact" class="hover:text-[#D43F3A] transition-colors">Contact</a>
+            <nav class="flex items-center gap-2 xl:gap-3 text-[#1A1A1A]/80">
+              <a href="#about" class="px-1.5 py-1 hover:text-[#D43F3A] transition-colors">About</a>
+              <a href="#skills" class="px-1.5 py-1 hover:text-[#D43F3A] transition-colors">Skills</a>
+              <a href="#projects" class="px-1.5 py-1 hover:text-[#D43F3A] transition-colors">Projects</a>
+              <a href="#achievements" class="px-1.5 py-1 hover:text-[#D43F3A] transition-colors">Achievements</a>
+              <a href="#credentials" class="px-1.5 py-1 hover:text-[#D43F3A] transition-colors">Education</a>
+              <a href="#contact" class="px-1.5 py-1 hover:text-[#D43F3A] transition-colors">Contact</a>
             </nav>
           ` : ''}
 
           <!-- View Mode Switcher -->
-          <div class="flex items-center p-0.5 bg-[#E8E4D9] border border-[#1A1A1A]">
+          <div class="flex items-center p-0.5 bg-[#E8E4D9] border border-[#1A1A1A] shrink-0">
             <button
               id="btn-view-website"
-              class="px-3 py-1.5 text-[11px] font-bold uppercase transition-all flex items-center gap-1.5 ${
+              class="px-2 py-1 text-[10px] font-bold uppercase transition-all flex items-center gap-1 ${
                 state.viewMode === 'website'
                   ? 'bg-[#1A1A1A] text-[#F4F1EA]'
                   : 'text-[#1A1A1A] hover:text-[#D43F3A]'
               }"
             >
-              <i data-lucide="layout" class="w-3.5 h-3.5"></i>
+              <i data-lucide="layout" class="w-3 h-3"></i>
               <span>Website</span>
             </button>
             <button
               id="btn-view-deck"
-              class="px-3 py-1.5 text-[11px] font-bold uppercase transition-all flex items-center gap-1.5 ${
+              class="px-2 py-1 text-[10px] font-bold uppercase transition-all flex items-center gap-1 ${
                 state.viewMode === 'deck'
                   ? 'bg-[#1A1A1A] text-[#F4F1EA]'
                   : 'text-[#1A1A1A] hover:text-[#D43F3A]'
               }"
             >
-              <i data-lucide="presentation" class="w-3.5 h-3.5"></i>
+              <i data-lucide="presentation" class="w-3 h-3"></i>
               <span>Slide Deck</span>
             </button>
           </div>
 
-          <!-- Action Buttons -->
-          <div class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 bg-[#E8E4D9] border border-[#1A1A1A] text-[10px] font-mono">
-            <i data-lucide="mail-check" class="w-3.5 h-3.5 text-[#D43F3A]"></i>
-            <span>Email: <strong class="text-[#D43F3A]">11cheker11@gmail.com</strong></span>
+          <!-- Email tag (2xl:flex only) -->
+          <div class="hidden 2xl:flex items-center gap-1 px-2 py-1 bg-[#E8E4D9] border border-[#1A1A1A] text-[10px] font-mono shrink-0">
+            <i data-lucide="mail-check" class="w-3 h-3 text-[#D43F3A]"></i>
+            <span>11cheker11@gmail.com</span>
           </div>
 
-          <button
-            id="btn-open-inbox"
-            class="px-2.5 py-1.5 border border-[#1A1A1A] bg-[#E8E4D9] hover:bg-[#1A1A1A] hover:text-[#F4F1EA] transition-all flex items-center gap-1"
-            title="View received messages log"
-          >
-            <i data-lucide="inbox" class="w-3.5 h-3.5 text-[#D43F3A]"></i>
-            <span>Inbox Log</span>
-          </button>
+          <!-- Action Buttons -->
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button
+              id="btn-open-inbox"
+              class="px-2 py-1 border border-[#1A1A1A] bg-[#E8E4D9] hover:bg-[#1A1A1A] hover:text-[#F4F1EA] transition-all flex items-center gap-1 text-[10px]"
+              title="View received messages log"
+            >
+              <i data-lucide="inbox" class="w-3 h-3 text-[#D43F3A]"></i>
+              <span class="hidden xl:inline">Inbox Log</span>
+            </button>
 
-          <button
-            id="btn-open-resume"
-            class="px-3.5 py-1.5 border border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-[#F4F1EA] transition-all flex items-center gap-1.5"
-          >
-            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
-            <span>Resume CV</span>
-          </button>
+            <button
+              id="btn-open-resume"
+              class="px-2.5 py-1 border border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-[#F4F1EA] transition-all flex items-center gap-1 text-[10px]"
+            >
+              <i data-lucide="file-text" class="w-3 h-3"></i>
+              <span>Resume CV</span>
+            </button>
 
-          <button
-            id="btn-open-consultation"
-            class="px-4 py-1.5 bg-[#D43F3A] text-white hover:bg-[#1A1A1A] transition-all flex items-center gap-1.5 shadow-[2px_2px_0px_0px_#1A1A1A]"
-          >
-            <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
-            <span>Contact Me</span>
-          </button>
+            <button
+              id="btn-open-consultation"
+              class="px-3 py-1 bg-[#D43F3A] text-white hover:bg-[#1A1A1A] transition-all flex items-center gap-1 text-[10px] shadow-[2px_2px_0px_0px_#1A1A1A]"
+            >
+              <i data-lucide="calendar" class="w-3 h-3"></i>
+              <span>Contact Me</span>
+            </button>
+          </div>
         </div>
 
-        <!-- Mobile Menu Button -->
-        <button id="btn-mobile-menu" class="md:hidden p-2 border border-[#1A1A1A]">
+        <!-- Mobile/Tablet Toggle Button (Visible on screens < lg) -->
+        <button id="btn-mobile-menu" class="lg:hidden p-1.5 sm:p-2 border border-[#1A1A1A] bg-[#E8E4D9] hover:bg-[#1A1A1A] hover:text-white transition-colors shrink-0">
           <i data-lucide="${state.mobileMenuOpen ? 'x' : 'menu'}" class="w-5 h-5"></i>
         </button>
 
@@ -213,17 +216,38 @@ function renderHeader() {
 
       <!-- Mobile Dropdown Drawer -->
       ${state.mobileMenuOpen ? `
-        <div class="md:hidden pt-4 pb-2 border-t border-[#1A1A1A] mt-3 space-y-3 text-xs font-bold uppercase tracking-wider">
-          <div class="flex items-center gap-2 mb-2">
-            <button id="mobile-view-website" class="flex-1 py-2 text-center border border-[#1A1A1A] ${state.viewMode === 'website' ? 'bg-[#1A1A1A] text-white' : ''}">Website</button>
-            <button id="mobile-view-deck" class="flex-1 py-2 text-center border border-[#1A1A1A] ${state.viewMode === 'deck' ? 'bg-[#1A1A1A] text-white' : ''}">Slide Deck</button>
+        <div class="lg:hidden pt-3 pb-3 border-t-2 border-[#1A1A1A] mt-2 space-y-3 text-xs font-bold uppercase tracking-wider bg-[#F4F1EA] px-2">
+          <!-- Nav Links -->
+          <nav class="grid grid-cols-2 gap-2 pb-2 border-b border-[#1A1A1A]/20">
+            <a href="#about" class="p-2 bg-[#E8E4D9] border border-[#1A1A1A] text-center hover:bg-[#1A1A1A] hover:text-white transition-colors">About</a>
+            <a href="#skills" class="p-2 bg-[#E8E4D9] border border-[#1A1A1A] text-center hover:bg-[#1A1A1A] hover:text-white transition-colors">Skills</a>
+            <a href="#projects" class="p-2 bg-[#E8E4D9] border border-[#1A1A1A] text-center hover:bg-[#1A1A1A] hover:text-white transition-colors">Projects</a>
+            <a href="#achievements" class="p-2 bg-[#E8E4D9] border border-[#1A1A1A] text-center hover:bg-[#1A1A1A] hover:text-white transition-colors">Achievements</a>
+            <a href="#credentials" class="p-2 bg-[#E8E4D9] border border-[#1A1A1A] text-center hover:bg-[#1A1A1A] hover:text-white transition-colors">Education</a>
+            <a href="#contact" class="p-2 bg-[#E8E4D9] border border-[#1A1A1A] text-center hover:bg-[#1A1A1A] hover:text-white transition-colors">Contact</a>
+          </nav>
+
+          <!-- View Switcher -->
+          <div class="flex items-center gap-2">
+            <button id="mobile-view-website" class="flex-1 py-2 text-center border border-[#1A1A1A] ${state.viewMode === 'website' ? 'bg-[#1A1A1A] text-white font-bold' : 'bg-[#E8E4D9]'}">Website View</button>
+            <button id="mobile-view-deck" class="flex-1 py-2 text-center border border-[#1A1A1A] ${state.viewMode === 'deck' ? 'bg-[#1A1A1A] text-white font-bold' : 'bg-[#E8E4D9]'}">Slide Deck</button>
           </div>
-          <button id="mobile-btn-resume" class="w-full text-left py-2 border-b border-[#1A1A1A]/20 flex items-center justify-between">
-            <span>Resume CV</span>
-            <i data-lucide="file-text" class="w-4 h-4"></i>
-          </button>
-          <button id="mobile-btn-call" class="w-full text-center py-2.5 bg-[#D43F3A] text-white font-bold">
-            Contact Me / Book Meeting
+
+          <!-- Action Buttons -->
+          <div class="grid grid-cols-2 gap-2">
+            <button id="mobile-btn-inbox" class="py-2.5 px-2 border border-[#1A1A1A] bg-[#E8E4D9] flex items-center justify-center gap-1.5 text-center">
+              <i data-lucide="inbox" class="w-4 h-4 text-[#D43F3A]"></i>
+              <span>Inbox Log</span>
+            </button>
+            <button id="mobile-btn-resume" class="py-2.5 px-2 border border-[#1A1A1A] bg-[#E8E4D9] flex items-center justify-center gap-1.5 text-center">
+              <i data-lucide="file-text" class="w-4 h-4"></i>
+              <span>Resume CV</span>
+            </button>
+          </div>
+
+          <button id="mobile-btn-call" class="w-full text-center py-3 bg-[#D43F3A] text-white font-bold tracking-widest uppercase shadow-[2px_2px_0px_0px_#1A1A1A] flex items-center justify-center gap-2">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span>Contact Me / Book Meeting</span>
           </button>
         </div>
       ` : ''}
@@ -251,64 +275,64 @@ function renderWebsiteView() {
 
 function renderHeroSection() {
   return `
-    <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-8 pt-6 pb-12 border-b-2 border-[#1A1A1A]">
+    <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-8 pt-4 sm:pt-6 pb-12 border-b-2 border-[#1A1A1A]">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
         <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#E8E4D9] border border-[#1A1A1A] text-xs font-bold uppercase tracking-[0.2em] text-[#D43F3A]">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#E8E4D9] border border-[#1A1A1A] text-[11px] sm:text-xs font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#D43F3A]">
             <span class="w-2 h-2 rounded-full bg-[#D43F3A] animate-pulse"></span>
             <span>OPEN FOR COLLABORATIONS, STARTUPS & TECH PROJECTS</span>
           </div>
 
-          <h1 class="font-serif italic font-normal text-5xl sm:text-7xl lg:text-8xl text-[#1A1A1A] leading-[0.95] tracking-tight">
+          <h1 class="font-serif italic font-normal text-4xl sm:text-6xl lg:text-8xl text-[#1A1A1A] leading-[0.95] tracking-tight">
             ${PERSONAL_INFO.name}
           </h1>
 
-          <p class="font-sans font-bold text-lg sm:text-xl text-[#1A1A1A]/90 uppercase tracking-widest">
+          <p class="font-sans font-bold text-base sm:text-xl text-[#1A1A1A]/90 uppercase tracking-widest">
             ${PERSONAL_INFO.title}
           </p>
 
-          <p class="font-sans text-base sm:text-lg text-[#1A1A1A]/80 leading-relaxed max-w-2xl">
+          <p class="font-sans text-sm sm:text-lg text-[#1A1A1A]/80 leading-relaxed max-w-2xl">
             ${PERSONAL_INFO.bio}
           </p>
 
           <!-- Key Resume Traits -->
           <div class="flex flex-wrap gap-2 pt-1">
             ${PERSONAL_INFO.traits.map(t => `
-              <span class="px-3 py-1 bg-[#E8E4D9] border border-[#1A1A1A] text-xs font-bold text-[#1A1A1A]">
+              <span class="px-2.5 sm:px-3 py-1 bg-[#E8E4D9] border border-[#1A1A1A] text-[11px] sm:text-xs font-bold text-[#1A1A1A]">
                 ✓ ${t}
               </span>
             `).join('')}
           </div>
 
           <!-- Key Metrics Pills -->
-          <div class="grid grid-cols-3 gap-3 pt-2 max-w-lg">
-            <div class="p-3 bg-[#E8E4D9] border border-[#1A1A1A] text-center">
-              <span class="font-serif italic font-bold text-2xl text-[#D43F3A] block">2024/25</span>
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#1A1A1A]">Infomatrix Stage 2</span>
+          <div class="grid grid-cols-3 gap-2 sm:gap-3 pt-2 max-w-lg">
+            <div class="p-2.5 sm:p-3 bg-[#E8E4D9] border border-[#1A1A1A] text-center">
+              <span class="font-serif italic font-bold text-xl sm:text-2xl text-[#D43F3A] block">FOUNDER</span>
+              <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#1A1A1A]">EdTech & PetTech</span>
             </div>
-            <div class="p-3 bg-[#E8E4D9] border border-[#1A1A1A] text-center">
-              <span class="font-serif italic font-bold text-2xl text-[#D43F3A] block">15+</span>
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#1A1A1A]">Projects & Banners</span>
+            <div class="p-2.5 sm:p-3 bg-[#E8E4D9] border border-[#1A1A1A] text-center">
+              <span class="font-serif italic font-bold text-xl sm:text-2xl text-[#D43F3A] block">15+</span>
+              <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#1A1A1A]">Projects & Banners</span>
             </div>
-            <div class="p-3 bg-[#E8E4D9] border border-[#1A1A1A] text-center">
-              <span class="font-serif italic font-bold text-2xl text-[#D43F3A] block">100%</span>
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#1A1A1A]">IT Dedication</span>
+            <div class="p-2.5 sm:p-3 bg-[#E8E4D9] border border-[#1A1A1A] text-center">
+              <span class="font-serif italic font-bold text-xl sm:text-2xl text-[#D43F3A] block">100%</span>
+              <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#1A1A1A]">IT Dedication</span>
             </div>
           </div>
 
           <!-- Hero CTAs -->
-          <div class="flex flex-wrap items-center gap-4 pt-4">
+          <div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-4">
             <button
               id="hero-btn-call"
-              class="px-6 py-3 bg-[#1A1A1A] text-[#F4F1EA] hover:bg-[#D43F3A] transition-all text-xs font-bold uppercase tracking-[0.2em] shadow-[4px_4px_0px_0px_#D43F3A] flex items-center gap-2"
+              class="px-5 sm:px-6 py-3 bg-[#1A1A1A] text-[#F4F1EA] hover:bg-[#D43F3A] transition-all text-xs font-bold uppercase tracking-[0.2em] shadow-[4px_4px_0px_0px_#D43F3A] flex items-center gap-2"
             >
               <span>Send Message</span>
               <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </button>
             <a
               href="#projects"
-              class="px-6 py-3 border-2 border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-all text-xs font-bold uppercase tracking-[0.2em]"
+              class="px-5 sm:px-6 py-3 border-2 border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-all text-xs font-bold uppercase tracking-[0.2em]"
             >
               Explore Projects
             </a>
@@ -316,16 +340,17 @@ function renderHeroSection() {
         </div>
 
         <div class="lg:col-span-5 relative">
-          <div class="border-2 border-[#1A1A1A] p-2 bg-[#E8E4D9] shadow-[12px_12px_0px_0px_#1A1A1A]">
+          <div class="border-2 border-[#1A1A1A] p-2 bg-[#E8E4D9] shadow-[8px_8px_0px_0px_#1A1A1A] lg:shadow-[12px_12px_0px_0px_#1A1A1A]">
             <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
-              alt="Arina Chekotun"
-              class="w-full h-[420px] object-cover grayscale contrast-110 border border-[#1A1A1A]"
+              src="./profile.jpg"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';"
+              alt="Arina Chekotun — IT Developer, Founder & Web Designer"
+              class="w-full h-[380px] sm:h-[440px] object-cover border border-[#1A1A1A] photo-editorial-filter"
               referrerpolicy="no-referrer"
             />
-            <div class="p-3 bg-[#F4F1EA] border-t border-[#1A1A1A] mt-2 flex justify-between items-center text-xs font-mono">
-              <span class="font-bold text-[#D43F3A] uppercase">${PERSONAL_INFO.location}</span>
-              <span class="text-[#1A1A1A]/80 font-bold uppercase">IT DEVELOPER & FOUNDER</span>
+            <div class="p-3 bg-[#F4F1EA] border-t border-[#1A1A1A] mt-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 text-[11px] sm:text-xs font-mono">
+              <span class="font-bold text-[#D43F3A] uppercase">KHERSON / ODESA, UKRAINE</span>
+              <span class="text-[#1A1A1A] font-bold uppercase tracking-wider">IT DEVELOPER | FOUNDER | WEB DESIGNER</span>
             </div>
           </div>
         </div>
@@ -1459,6 +1484,27 @@ function attachEventListeners() {
     });
   }
 
+  const mobileBtnInbox = document.getElementById('mobile-btn-inbox');
+  if (mobileBtnInbox) {
+    mobileBtnInbox.addEventListener('click', async () => {
+      state.showInboxModal = true;
+      state.inboxLoading = true;
+      state.mobileMenuOpen = false;
+      renderApp();
+
+      try {
+        const res = await fetch('/api/messages');
+        const data = await res.json();
+        state.inboxMessages = data.messages || [];
+      } catch (err) {
+        console.error('Error fetching inbox messages:', err);
+      } finally {
+        state.inboxLoading = false;
+        renderApp();
+      }
+    });
+  }
+
   const mobileBtnResume = document.getElementById('mobile-btn-resume');
   if (mobileBtnResume) {
     mobileBtnResume.addEventListener('click', () => {
@@ -1477,6 +1523,16 @@ function attachEventListeners() {
       renderApp();
     });
   }
+
+  // Close mobile drawer when clicking anchor links inside drawer
+  document.querySelectorAll('header nav a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (state.mobileMenuOpen) {
+        state.mobileMenuOpen = false;
+        renderApp();
+      }
+    });
+  });
 
   // Project Category Filters
   document.querySelectorAll('.btn-project-filter').forEach(btn => {
