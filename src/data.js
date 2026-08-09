@@ -180,7 +180,7 @@ export const PROJECTS = [
     categoryLabel: "GitHub Web Sites",
     description: "An original website and structured curriculum created to teach computer science and web development fundamentals to beginners.",
     longDescription: "Engineered from scratch using HTML5, CSS3, JavaScript, and Python backend scripts. Includes modular lessons, code practice environments, and responsive interactive design.",
-    image: "/projects/github_site_1.jpg",
+    image: "./projects/github_site_1.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
     metrics: [
       { label: "Code Base", value: "HTML/JS/Py" },
@@ -204,7 +204,7 @@ export const PROJECTS = [
     categoryLabel: "GitHub Web Sites",
     description: "Responsive portfolio hub featuring dual View Modes (Interactive Website & Slide Deck), built with modern web technologies.",
     longDescription: "Custom built with vanilla JS and Vite, featuring editorial typographic hierarchy, dynamic filtering, server communication endpoints, and adaptive mobile layout.",
-    image: "/projects/github_site_2.jpg",
+    image: "./projects/github_site_2.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     metrics: [
       { label: "Tech Stack", value: "Vite + JS + CSS" },
@@ -228,7 +228,7 @@ export const PROJECTS = [
     categoryLabel: "GitHub Web Sites",
     description: "Custom Python bots and automation scripts for community management, SMM operations, and client interactions.",
     longDescription: "Developed to automate client communication and content pipelines. Features custom trigger logic, inline menus, and integration with AI generative models.",
-    image: "/projects/github_site_3.jpg",
+    image: "./projects/github_site_3.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1200&q=80",
     metrics: [
       { label: "Language", value: "Python 3" },
@@ -256,7 +256,7 @@ export const PROJECTS = [
     categoryLabel: "Figma Designs",
     description: "Complete Figma design system and UI/UX layout for an interactive computer science learning platform.",
     longDescription: "Crafted in Figma with component variants, auto-layout cards, custom iconography, and responsive grid guidelines for desktop and mobile devices.",
-    image: "/projects/figma_design_1.jpg",
+    image: "./projects/figma_design_1.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=1200&q=80",
     metrics: [
       { label: "Design Tool", value: "Figma" },
@@ -280,7 +280,7 @@ export const PROJECTS = [
     categoryLabel: "Figma Designs",
     description: "High-fidelity mobile app design concept for a smart pet care platform, pet health tracking, and community connection.",
     longDescription: "Focuses on user-friendly mobile navigation, visual pet profile dashboards, notification cards, and seamless booking for pet care services.",
-    image: "/projects/figma_design_2.jpg",
+    image: "./projects/figma_design_2.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     metrics: [
       { label: "Focus", value: "PetTech Sector" },
@@ -304,7 +304,7 @@ export const PROJECTS = [
     categoryLabel: "Figma Designs",
     description: "Collection of 50+ delivered advertising banners, social media assets, presentation pitch decks, and custom logos.",
     longDescription: "Delivered for freelance clients across Ukraine and internationally. Combines Figma visual precision with Canva graphics for high-converting marketing campaigns.",
-    image: "/projects/figma_design_3.jpg",
+    image: "./projects/figma_design_3.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=80",
     metrics: [
       { label: "Volume", value: "50+ Assets" },
@@ -332,7 +332,7 @@ export const PROJECTS = [
     categoryLabel: "Startups & Innovations",
     description: "An innovative IT startup presented at the 2nd stage of the prestigious Infomatrix Ukraine National Competition in 2024 and 2025.",
     longDescription: "Engineered for the International Infomatrix competition. Demonstrates technical prototype execution, social value, and market feasibility. Supported by the Ukrainian Future (UF) Business Incubator.",
-    image: "/projects/startup_1.jpg",
+    image: "./projects/startup_1.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
     metrics: [
       { label: "Competition", value: "Infomatrix Stage 2" },
@@ -356,7 +356,7 @@ export const PROJECTS = [
     categoryLabel: "Startups & Innovations",
     description: "Social innovation initiative developed within the UNICEF-supported UPSHIFT youth empowerment program.",
     longDescription: "Focuses on solving community challenges through team leadership, human-centered design methodology, budget planning, and IT web solution creation.",
-    image: "/projects/startup_2.jpg",
+    image: "./projects/startup_2.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
     metrics: [
       { label: "Program", value: "UPSHIFT Ukraine" },
@@ -380,7 +380,7 @@ export const PROJECTS = [
     categoryLabel: "Startups & Innovations",
     description: "An emerging startup venture focused on smart technology solutions for pet health, owner assistance, and digital pet care services.",
     longDescription: "Combines web dashboards, automated notifications, and UI design to deliver a seamless experience for pet lovers and veterinary services.",
-    image: "/projects/startup_3.jpg",
+    image: "./projects/startup_3.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1200&q=80",
     metrics: [
       { label: "Sector", value: "PetTech" },

@@ -11,6 +11,27 @@ import {
   RESUME_SLIDES
 } from './data.js';
 
+// Image extension fallback helper: automatically tries .png, .jpeg, .jpg, .JPG, .PNG, .JPEG, .webp
+window.handleImgError = function(img, fallbackUrl) {
+  if (!img.dataset.origBase) {
+    const currentSrc = img.getAttribute('src') || img.src;
+    const cleanSrc = currentSrc.split('?')[0].split('#')[0];
+    const lastDot = cleanSrc.lastIndexOf('.');
+    img.dataset.origBase = lastDot !== -1 ? cleanSrc.substring(0, lastDot) : cleanSrc;
+    img.dataset.extIdx = '0';
+  }
+  const exts = ['.png', '.jpeg', '.jpg', '.JPG', '.PNG', '.JPEG', '.webp'];
+  let idx = parseInt(img.dataset.extIdx, 10);
+  if (idx < exts.length) {
+    const ext = exts[idx];
+    img.dataset.extIdx = (idx + 1).toString();
+    img.src = img.dataset.origBase + ext;
+  } else {
+    img.onerror = null;
+    if (fallbackUrl) img.src = fallbackUrl;
+  }
+};
+
 // Application State
 const state = {
   viewMode: 'website', // 'website' | 'deck'
@@ -460,7 +481,7 @@ function renderHeroSection() {
           <div class="border-2 border-[#1A1A1A] p-2 bg-[#E8E4D9] shadow-[8px_8px_0px_0px_#1A1A1A] lg:shadow-[12px_12px_0px_0px_#1A1A1A]">
             <img
               src="./profile.jpg"
-              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';"
+              onerror="handleImgError(this, 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80')"
               alt="Arina Chekotun — IT Developer, Founder & Web Designer"
               class="w-full h-[320px] xs:h-[380px] sm:h-[460px] lg:h-[500px] object-cover object-top border border-[#1A1A1A] photo-editorial-filter"
               referrerpolicy="no-referrer"
@@ -727,7 +748,7 @@ function renderProjectsSection() {
                     >
                       <img
                         src="${currentProj.image}"
-                        onerror="this.onerror=null; this.src='${currentProj.fallbackImage}';"
+                        onerror="handleImgError(this, '${currentProj.fallbackImage}')"
                         alt="${currentProj.title}"
                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 photo-editorial-filter"
                       />
@@ -886,7 +907,7 @@ function renderProjectsSection() {
                         <div class="aspect-video w-full overflow-hidden border border-[#1A1A1A] mb-2 bg-[#1A1A1A]">
                           <img
                             src="${p.image}"
-                            onerror="this.onerror=null; this.src='${p.fallbackImage}';"
+                            onerror="handleImgError(this, '${p.fallbackImage}')"
                             alt="${p.title}"
                             class="w-full h-full object-cover photo-editorial-filter"
                           />
@@ -1337,6 +1358,7 @@ function renderProjectModal(project) {
           <div class="border border-[#1A1A1A] aspect-video relative overflow-hidden">
             <img
               src="${project.image}"
+              onerror="handleImgError(this, '${project.fallbackImage}')"
               alt="${project.title}"
               class="w-full h-full object-cover grayscale contrast-110"
               referrerpolicy="no-referrer"
