@@ -692,13 +692,13 @@ function renderProjectsSection() {
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <div class="space-y-2">
             <span class="text-[10px] sm:text-xs font-bold text-[#D43F3A] uppercase tracking-[0.2em] block">
-              03 • FEATURED WORKS & PROJECTS (ПРИМЕРЫ РАБОТ)
+              03 • FEATURED WORKS & PROJECTS
             </span>
             <h2 class="font-serif italic font-bold text-3xl sm:text-5xl text-[#1A1A1A]">
               GitHub Sites, Figma Designs & Startups
             </h2>
             <p class="font-sans text-xs sm:text-sm text-[#1A1A1A]/80 max-w-2xl leading-relaxed">
-              Explore my projects divided into three dedicated categories. Use the carousel controls or click thumbnails to inspect each work. You can also add your own custom photos to <code class="bg-[#E8E4D9] px-1 font-mono text-[11px] border border-[#1A1A1A]">/public/projects/</code>.
+              Explore my projects divided into three dedicated categories. Use the carousel controls or click thumbnails to inspect each work.
             </p>
           </div>
 
