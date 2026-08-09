@@ -55,7 +55,7 @@ export const SKILL_CATEGORIES = [
     skills: [
       {
         name: "Python",
-        level: 90,
+        level: 60,
         experienceYears: "Active Development",
         description: "Bot development, script automation, data processing, and beginner course creation.",
         highlight: "Built custom Telegram chatbots and automated workflows."
@@ -69,7 +69,7 @@ export const SKILL_CATEGORIES = [
       },
       {
         name: "JavaScript (JS)",
-        level: 80,
+        level: 40,
         experienceYears: "Ongoing Mastery",
         description: "DOM manipulation, dynamic UI logic, API integration, and algorithmic problem solving.",
         highlight: "FreeCodeCamp JS Certification in active progress."
@@ -90,7 +90,7 @@ export const SKILL_CATEGORIES = [
       },
       {
         name: "C++",
-        level: 75,
+        level: 30,
         experienceYears: "Foundational Logic",
         description: "Object-oriented concepts, algorithmic logic, data structures.",
         highlight: "Studied core software engineering foundations."
@@ -113,7 +113,7 @@ export const SKILL_CATEGORIES = [
       },
       {
         name: "Canva & Graphics Design",
-        level: 95,
+        level: 100,
         experienceYears: "Graphic Production",
         description: "Advertising banners, social media marketing assets, presentation decks, logo design.",
         highlight: "Delivered 50+ banners and presentations for freelance clients."
