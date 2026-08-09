@@ -179,11 +179,11 @@ export const PROJECTS = [
     category: "github",
     categoryLabel: "GitHub Web Sites",
     description: "An original website and structured curriculum created to teach computer science and web development fundamentals to beginners.",
-    longDescription: "Engineered from scratch using HTML5, CSS3, JavaScript, and Python backend scripts. Includes modular lessons, code practice environments, and responsive interactive design.",
+    longDescription: "Engineered from scratch using HTML5, CSS3, JavaScript, and Python backend scripts for chatbot. Includes modular lessons, code practice environments, and responsive interactive design.",
     image: "./projects/github_site_1.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
     metrics: [
-      { label: "Code Base", value: "HTML/JS/Py" },
+      { label: "Code Base", value: "HTML/CSS/JS/Py" },
       { label: "Target Audience", value: "IT Beginners" },
       { label: "Repository", value: "GitHub Public" }
     ],
