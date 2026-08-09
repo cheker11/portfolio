@@ -7,9 +7,10 @@ export const PERSONAL_INFO = {
   nationality: "Ukrainian",
   email: "11cheker11@gmail.com",
   phone: "Available upon request",
-  github: "https://github.com",
-  linkedin: "https://linkedin.com",
-  instagram: "https://instagram.com/11_cheker_11",
+  github: "https://github.com/cheker11",
+  linkedin: "https://www.linkedin.com/in/arinachekotun/",
+  instagram: "https://www.instagram.com/11_cheker_11/",
+  instagramHandle: "11_cheker_11",
   bio: "Purposeful, persistent, open to new knowledge, proactive, and creative. IT Developer, Founder, and Designer building innovative products in the EdTech and PetTech sectors. Creator of educational computer science courses, interactive learning platforms, and pet care tech solutions alongside custom web design, ad banners, and logos.",
   availability: "Open for EdTech & PetTech Collaborations, Startups & Tech Projects",
   experienceYears: "3+ Years",
@@ -143,100 +144,260 @@ export const SKILL_CATEGORIES = [
   }
 ];
 
-export const PROJECTS = [
+export const PROJECT_CATEGORIES_CONFIG = [
   {
-    id: "cs-learning-platform",
-    title: "IT Course & Beginner CS Platform",
-    subtitle: "Educational Platform & Web Authoring",
-    category: "EdTech & Web",
-    description: "An author-created website and structured course curriculum designed to teach computer science and web development fundamentals to beginners.",
-    longDescription: "Created to bridge the digital skills gap, this project includes custom learning modules, interactive exercises, and guided tutorials covering computer science basics, web design, and programming logic.",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
-    featured: true,
+    id: "github",
+    title: "1. GitHub Web Sites",
+    titleRu: "Сайты с GitHub",
+    icon: "code-2",
+    description: "Live interactive websites, educational platforms, and Python services hosted on GitHub."
+  },
+  {
+    id: "figma",
+    title: "2. Figma Designs",
+    titleRu: "Работы в Figma",
+    icon: "figma",
+    description: "UI/UX prototypes, mobile/web interfaces, presentation pitch decks, and ad banner graphics."
+  },
+  {
+    id: "startups",
+    title: "3. Startups & Innovations",
+    titleRu: "Стартапы & Проекты",
+    icon: "rocket",
+    description: "Tech startup innovations, PetTech ecosystems, and EdTech ventures presented at national competitions."
+  }
+];
+
+export const PROJECTS = [
+  // ----------------------------------------------------
+  // CATEGORY 1: GITHUB WEB SITES
+  // ----------------------------------------------------
+  {
+    id: "github-cs-platform",
+    title: "IT CS & Web Learning Platform",
+    subtitle: "Interactive Educational Website",
+    category: "github",
+    categoryLabel: "GitHub Web Sites",
+    description: "An original website and structured curriculum created to teach computer science and web development fundamentals to beginners.",
+    longDescription: "Engineered from scratch using HTML5, CSS3, JavaScript, and Python backend scripts. Includes modular lessons, code practice environments, and responsive interactive design.",
+    image: "/projects/github_site_1.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
     metrics: [
-      { label: "Platform Role", value: "Author & Lead" },
-      { label: "Target Audience", value: "Beginners in IT" },
-      { label: "Core Topics", value: "CS, Web & Code" }
+      { label: "Code Base", value: "HTML/JS/Py" },
+      { label: "Target Audience", value: "IT Beginners" },
+      { label: "Repository", value: "GitHub Public" }
     ],
-    tags: ["HTML & CSS", "JavaScript", "Educational Design", "Python"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    tags: ["HTML5/CSS3", "JavaScript", "Python", "Educational Web"],
+    githubUrl: "https://github.com/cheker11",
+    liveUrl: "https://cheker11.github.io/portfolio/",
     highlights: [
       "Authored original curriculum for computer science newcomers.",
-      "Designed clean, readable web interface tailored for learning.",
-      "Integrated step-by-step interactive code snippets and practice tasks."
+      "Designed high-contrast readable UI tailored for learning.",
+      "Published and version-controlled on GitHub Pages."
     ]
   },
   {
-    id: "infomatrix-startup",
-    title: "Infomatrix Ukraine Startup Project",
-    subtitle: "National Competition Finalist Project",
-    category: "Startups & Innovation",
-    description: "An innovative IT project and startup presented at the 2nd stage of the prestigious Infomatrix Ukraine National Competition in 2024 and 2025.",
-    longDescription: "Engineered as an entry for the International Infomatrix competition, demonstrating technological ingenuity, business feasibility, and social relevance. Collaborative incubation support provided by UF Incubator.",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
-    featured: true,
+    id: "github-portfolio-app",
+    title: "Personal Interactive Web Portfolio",
+    subtitle: "High-Performance SPA & Dual-Mode Hub",
+    category: "github",
+    categoryLabel: "GitHub Web Sites",
+    description: "Responsive portfolio hub featuring dual View Modes (Interactive Website & Slide Deck), built with modern web technologies.",
+    longDescription: "Custom built with vanilla JS and Vite, featuring editorial typographic hierarchy, dynamic filtering, server communication endpoints, and adaptive mobile layout.",
+    image: "/projects/github_site_2.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     metrics: [
-      { label: "Competition Stage", value: "National Stage 2" },
-      { label: "Years Active", value: "2024 & 2025" },
-      { label: "Incubator", value: "UF Incubator" }
+      { label: "Tech Stack", value: "Vite + JS + CSS" },
+      { label: "Responsiveness", value: "Mobile/Desktop" },
+      { label: "Deployment", value: "GitHub Pages" }
     ],
-    tags: ["Startup", "Python", "Web Design", "Pitch Deck", "Figma"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    tags: ["Vite", "JavaScript", "Tailwind CSS", "GitHub Actions"],
+    githubUrl: "https://github.com/cheker11",
+    liveUrl: "https://cheker11.github.io/portfolio/",
     highlights: [
-      "Qualified for Stage 2 of National Competition of Projects 'Infomatrix Ukraine'.",
-      "Collaborated with Ukrainian Future (UF) Business Incubator.",
-      "Presented technical prototype and pitch deck to national jury."
+      "Engineered responsive layout adapted for mobile and desktop screens.",
+      "Configured automated GitHub Actions workflow for continuous deployment.",
+      "Integrated direct contact inbox logging and consultation booking."
     ]
   },
   {
-    id: "ai-chatbots-automation",
-    title: "AI Chatbots & SMM Automation Engine",
-    subtitle: "Python & Telegram Automation Suite",
-    category: "AI & Chatbots",
-    description: "Custom Python chatbots and automated interaction scripts for managing social networks, user queries, and workflow assistance.",
-    longDescription: "Developed to automate client communication and community management. Features natural response triggers, multi-option menus, and integration with modern AI tools.",
-    image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1200&q=80",
-    featured: true,
+    id: "github-python-bots",
+    title: "Python Automation & Telegram Bot Suite",
+    subtitle: "Smart Automation & Chat Systems",
+    category: "github",
+    categoryLabel: "GitHub Web Sites",
+    description: "Custom Python bots and automation scripts for community management, SMM operations, and client interactions.",
+    longDescription: "Developed to automate client communication and content pipelines. Features custom trigger logic, inline menus, and integration with AI generative models.",
+    image: "/projects/github_site_3.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1200&q=80",
     metrics: [
-      { label: "Primary Language", value: "Python" },
-      { label: "Platform", value: "Telegram & Web" },
-      { label: "Capabilities", value: "Chatbots & SMM" }
+      { label: "Language", value: "Python 3" },
+      { label: "Platform", value: "Telegram API" },
+      { label: "Focus", value: "Bot Automation" }
     ],
-    tags: ["Python", "AI Instruments", "Telegram API", "Automation"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    tags: ["Python", "Telegram API", "AI Instruments", "Automation"],
+    githubUrl: "https://github.com/cheker11",
+    liveUrl: "https://github.com/cheker11",
     highlights: [
-      "Built interactive conversational logic for chatbots.",
+      "Built interactive conversational logic for automated user flows.",
       "Integrated social media management pipelines for client projects.",
       "Utilized prompt engineering and AI assistant workflows."
     ]
   },
+
+  // ----------------------------------------------------
+  // CATEGORY 2: FIGMA DESIGNS
+  // ----------------------------------------------------
   {
-    id: "freelance-design-suite",
-    title: "Freelance Graphic & Web Design Suite",
-    subtitle: "Banners, Logos, Presentations & Web Graphics",
-    category: "Design & Freelance",
-    description: "A comprehensive collection of client branding deliverables including ad banners, high-impact presentations, custom logos, and document design.",
-    longDescription: "Delivered for a wide range of freelance clients. Combines Figma precision with Canva speed to produce eye-catching advertising materials, event banners, and technical document layouts.",
-    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=80",
-    featured: false,
+    id: "figma-edtech-ui",
+    title: "EdTech Learning Platform Design System",
+    subtitle: "UI/UX Prototype & Layout Architecture",
+    category: "figma",
+    categoryLabel: "Figma Designs",
+    description: "Complete Figma design system and UI/UX layout for an interactive computer science learning platform.",
+    longDescription: "Crafted in Figma with component variants, auto-layout cards, custom iconography, and responsive grid guidelines for desktop and mobile devices.",
+    image: "/projects/figma_design_1.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=1200&q=80",
     metrics: [
-      { label: "Deliverables", value: "50+ Banners & Decks" },
-      { label: "Tools", value: "Figma, Canva, PP" },
-      { label: "Client Satisfaction", value: "100%" }
+      { label: "Design Tool", value: "Figma" },
+      { label: "Deliverables", value: "UI/UX & Components" },
+      { label: "Design Style", value: "Modern & Clean" }
     ],
-    tags: ["Figma", "Canva", "PowerPoint", "Branding", "CapCut"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    tags: ["Figma", "UI/UX Design", "Wireframing", "Design System"],
+    figmaUrl: "https://www.figma.com",
+    liveUrl: "https://www.figma.com",
     highlights: [
-      "Created promotional banners for social media advertising campaigns.",
-      "Designed professional presentations in PowerPoint and Canva.",
-      "Provided formatting and design assistance for MS Word and Excel tasks."
+      "Designed full web app wireframes and interactive user flows.",
+      "Created consistent typographic hierarchy and accessible color palettes.",
+      "Built reusable component library with interactive button states."
+    ]
+  },
+  {
+    id: "figma-pettech-app",
+    title: "PetTech Smart App UI/UX Concept",
+    subtitle: "Mobile Application Interface & Branding",
+    category: "figma",
+    categoryLabel: "Figma Designs",
+    description: "High-fidelity mobile app design concept for a smart pet care platform, pet health tracking, and community connection.",
+    longDescription: "Focuses on user-friendly mobile navigation, visual pet profile dashboards, notification cards, and seamless booking for pet care services.",
+    image: "/projects/figma_design_2.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    metrics: [
+      { label: "Focus", value: "PetTech Sector" },
+      { label: "Target", value: "Mobile iOS/Android" },
+      { label: "Format", value: "Interactive Prototype" }
+    ],
+    tags: ["Figma", "Mobile UI", "PetTech", "App Prototype"],
+    figmaUrl: "https://www.figma.com",
+    liveUrl: "https://www.figma.com",
+    highlights: [
+      "Engineered intuitive mobile navigation for quick pet health logging.",
+      "Crafted custom vector illustrations and pet status indicator badges.",
+      "Prepared developer-ready handoff specs with pixel-perfect layouts."
+    ]
+  },
+  {
+    id: "figma-graphics-suite",
+    title: "Freelance Ad Banners, Decks & SMM Suite",
+    subtitle: "Graphic Production & Marketing Assets",
+    category: "figma",
+    categoryLabel: "Figma Designs",
+    description: "Collection of 50+ delivered advertising banners, social media assets, presentation pitch decks, and custom logos.",
+    longDescription: "Delivered for freelance clients across Ukraine and internationally. Combines Figma visual precision with Canva graphics for high-converting marketing campaigns.",
+    image: "/projects/figma_design_3.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=1200&q=80",
+    metrics: [
+      { label: "Volume", value: "50+ Assets" },
+      { label: "Client Rating", value: "100% Satisfaction" },
+      { label: "Tools", value: "Figma + Canva" }
+    ],
+    tags: ["Figma", "Canva", "Graphic Design", "Ad Banners", "Logos"],
+    figmaUrl: "https://www.figma.com",
+    liveUrl: "https://www.figma.com",
+    highlights: [
+      "Created eye-catching advertising banners for social media campaigns.",
+      "Designed professional pitch decks for startups and commercial proposals.",
+      "Crafted unique logo concepts and visual brand identity guidelines."
+    ]
+  },
+
+  // ----------------------------------------------------
+  // CATEGORY 3: STARTUPS & INNOVATIONS
+  // ----------------------------------------------------
+  {
+    id: "startup-infomatrix",
+    title: "Infomatrix Ukraine National Startup Project",
+    subtitle: "National Competition Stage 2 Finalist",
+    category: "startups",
+    categoryLabel: "Startups & Innovations",
+    description: "An innovative IT startup presented at the 2nd stage of the prestigious Infomatrix Ukraine National Competition in 2024 and 2025.",
+    longDescription: "Engineered for the International Infomatrix competition. Demonstrates technical prototype execution, social value, and market feasibility. Supported by the Ukrainian Future (UF) Business Incubator.",
+    image: "/projects/startup_1.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+    metrics: [
+      { label: "Competition", value: "Infomatrix Stage 2" },
+      { label: "Timeline", value: "2024 — 2025" },
+      { label: "Incubator", value: "UF Incubator" }
+    ],
+    tags: ["Startup", "Infomatrix", "UF Incubator", "Pitch Deck", "Python"],
+    githubUrl: "https://github.com/cheker11",
+    liveUrl: "https://cheker11.github.io/portfolio/",
+    highlights: [
+      "Qualified for Stage 2 of National Competition of Projects 'Infomatrix Ukraine'.",
+      "Accelerated through Ukrainian Future (UF) Business Incubator.",
+      "Presented technical prototype and pitch deck to national jury."
+    ]
+  },
+  {
+    id: "startup-upshift-unicef",
+    title: "UPSHIFT Youth Innovation Program Project",
+    subtitle: "Supported by UNICEF Ukraine",
+    category: "startups",
+    categoryLabel: "Startups & Innovations",
+    description: "Social innovation initiative developed within the UNICEF-supported UPSHIFT youth empowerment program.",
+    longDescription: "Focuses on solving community challenges through team leadership, human-centered design methodology, budget planning, and IT web solution creation.",
+    image: "/projects/startup_2.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
+    metrics: [
+      { label: "Program", value: "UPSHIFT Ukraine" },
+      { label: "Partner", value: "UNICEF" },
+      { label: "Role", value: "Project Lead" }
+    ],
+    tags: ["UPSHIFT", "UNICEF", "Social Startup", "Leadership"],
+    githubUrl: "https://github.com/cheker11",
+    liveUrl: "https://cheker11.github.io/portfolio/",
+    highlights: [
+      "Selected for UNICEF UPSHIFT youth innovation program.",
+      "Mastered human-centered design, team budgeting, and project implementation.",
+      "Delivered high-impact community product."
+    ]
+  },
+  {
+    id: "startup-pettech-venture",
+    title: "PetTech Smart Ecosystem Venture",
+    subtitle: "Pet Care Tech Innovation",
+    category: "startups",
+    categoryLabel: "Startups & Innovations",
+    description: "An emerging startup venture focused on smart technology solutions for pet health, owner assistance, and digital pet care services.",
+    longDescription: "Combines web dashboards, automated notifications, and UI design to deliver a seamless experience for pet lovers and veterinary services.",
+    image: "/projects/startup_3.jpg",
+    fallbackImage: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=1200&q=80",
+    metrics: [
+      { label: "Sector", value: "PetTech" },
+      { label: "Stage", value: "Prototype & Deck" },
+      { label: "Founder", value: "Arina Chekotun" }
+    ],
+    tags: ["PetTech", "Startup", "Web App", "Founder"],
+    githubUrl: "https://github.com/cheker11",
+    liveUrl: "https://cheker11.github.io/portfolio/",
+    highlights: [
+      "Formulated core value proposition and market architecture for PetTech.",
+      "Designed full prototype UI and pitch presentation deck.",
+      "Actively seeking collaborators and startup ecosystem partners."
     ]
   }
 ];
+
 
 export const EDUCATION = [
   {

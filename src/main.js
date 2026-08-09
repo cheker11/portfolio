@@ -3,6 +3,7 @@ import {
   MISSION_PILLARS,
   SKILL_CATEGORIES,
   PROJECTS,
+  PROJECT_CATEGORIES_CONFIG,
   EDUCATION,
   ACHIEVEMENTS,
   CERTIFICATIONS,
@@ -13,7 +14,12 @@ import {
 // Application State
 const state = {
   viewMode: 'website', // 'website' | 'deck'
-  selectedCategory: 'All',
+  selectedCategoryTab: 'all', // 'all' | 'github' | 'figma' | 'startups'
+  carouselIndices: {
+    github: 0,
+    figma: 0,
+    startups: 0
+  },
   selectedProject: null,
   showResumeModal: false,
   showConsultationModal: false,
@@ -120,43 +126,74 @@ function renderApp() {
 // --------------------------------------------------
 function renderHeader() {
   return `
-    <header class="sticky top-0 z-40 bg-[#F4F1EA]/95 backdrop-blur-md border-b-2 border-[#1A1A1A] px-3 sm:px-6 py-2.5 transition-all w-full overflow-x-clip">
-      <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 lg:gap-4">
+    <header class="sticky top-0 z-40 bg-[#F4F1EA]/95 backdrop-blur-md border-b-2 border-[#1A1A1A] px-3 sm:px-6 py-2.5 transition-all w-full overflow-x-hidden">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 lg:gap-3 w-full">
         
         <!-- Logo / Name -->
-        <a href="#hero" id="nav-logo" class="flex items-center gap-2.5 group shrink-0">
+        <a href="#hero" id="nav-logo" class="flex items-center gap-2 sm:gap-2.5 group shrink-0">
           <div class="w-8 h-8 sm:w-9 sm:h-9 bg-[#1A1A1A] text-[#F4F1EA] font-serif italic text-lg sm:text-xl font-bold flex items-center justify-center border border-[#1A1A1A] group-hover:bg-[#D43F3A] group-hover:text-white transition-colors">
             AC
           </div>
           <div>
-            <span class="font-serif italic text-base sm:text-lg font-bold tracking-tight text-[#1A1A1A] block leading-none">
+            <span class="font-serif italic text-sm sm:text-base font-bold tracking-tight text-[#1A1A1A] block leading-none">
               Arina Chekotun
             </span>
-            <span class="text-[9px] sm:text-[10px] font-bold text-[#D43F3A] uppercase tracking-[0.15em] block mt-0.5">
+            <span class="text-[8px] sm:text-[9px] font-bold text-[#D43F3A] uppercase tracking-[0.15em] block mt-0.5">
               IT Developer | Founder | Designer
             </span>
           </div>
         </a>
 
         <!-- Desktop Navigation & Controls (Visible on lg: and above) -->
-        <div class="hidden lg:flex items-center gap-2 xl:gap-4 text-[11px] font-bold uppercase tracking-[0.1em] shrink-0">
+        <div class="hidden lg:flex items-center gap-1.5 xl:gap-3 text-[10px] xl:text-[11px] font-bold uppercase tracking-wider shrink-0">
           
           ${state.viewMode === 'website' ? `
-            <nav class="flex items-center gap-2 xl:gap-3 text-[#1A1A1A]/80">
-              <a href="#about" class="px-1.5 py-1 hover:text-[#D43F3A] transition-colors">About</a>
-              <a href="#skills" class="px-1.5 py-1 hover:text-[#D43F3A] transition-colors">Skills</a>
-              <a href="#projects" class="px-1.5 py-1 hover:text-[#D43F3A] transition-colors">Projects</a>
-              <a href="#achievements" class="px-1.5 py-1 hover:text-[#D43F3A] transition-colors">Achievements</a>
-              <a href="#credentials" class="px-1.5 py-1 hover:text-[#D43F3A] transition-colors">Education</a>
-              <a href="#contact" class="px-1.5 py-1 hover:text-[#D43F3A] transition-colors">Contact</a>
+            <nav class="flex items-center gap-1.5 xl:gap-2 text-[#1A1A1A]/80">
+              <a href="#about" class="px-1 py-0.5 hover:text-[#D43F3A] transition-colors">About</a>
+              <a href="#skills" class="px-1 py-0.5 hover:text-[#D43F3A] transition-colors">Skills</a>
+              <a href="#projects" class="px-1 py-0.5 hover:text-[#D43F3A] transition-colors">Projects</a>
+              <a href="#achievements" class="px-1 py-0.5 hover:text-[#D43F3A] transition-colors">Achievements</a>
+              <a href="#credentials" class="px-1 py-0.5 hover:text-[#D43F3A] transition-colors">Education</a>
+              <a href="#contact" class="px-1 py-0.5 hover:text-[#D43F3A] transition-colors">Contact</a>
             </nav>
           ` : ''}
+
+          <!-- Social Quick Links Bar -->
+          <div class="flex items-center gap-1 pr-1 border-r border-[#1A1A1A]/20">
+            <a
+              href="${PERSONAL_INFO.linkedin}"
+              target="_blank"
+              rel="noreferrer"
+              class="p-1.5 bg-[#E8E4D9] border border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors"
+              title="LinkedIn Profile: arinachekotun"
+            >
+              <i data-lucide="linkedin" class="w-3.5 h-3.5"></i>
+            </a>
+            <a
+              href="${PERSONAL_INFO.instagram}"
+              target="_blank"
+              rel="noreferrer"
+              class="p-1.5 bg-[#E8E4D9] border border-[#1A1A1A] text-[#D43F3A] hover:bg-[#D43F3A] hover:text-white transition-colors"
+              title="Instagram: @11_cheker_11"
+            >
+              <i data-lucide="instagram" class="w-3.5 h-3.5"></i>
+            </a>
+            <a
+              href="${PERSONAL_INFO.github}"
+              target="_blank"
+              rel="noreferrer"
+              class="p-1.5 bg-[#E8E4D9] border border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors"
+              title="GitHub: cheker11"
+            >
+              <i data-lucide="github" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
 
           <!-- View Mode Switcher -->
           <div class="flex items-center p-0.5 bg-[#E8E4D9] border border-[#1A1A1A] shrink-0">
             <button
               id="btn-view-website"
-              class="px-2 py-1 text-[10px] font-bold uppercase transition-all flex items-center gap-1 ${
+              class="px-2 py-1 text-[9px] xl:text-[10px] font-bold uppercase transition-all flex items-center gap-1 ${
                 state.viewMode === 'website'
                   ? 'bg-[#1A1A1A] text-[#F4F1EA]'
                   : 'text-[#1A1A1A] hover:text-[#D43F3A]'
@@ -167,7 +204,7 @@ function renderHeader() {
             </button>
             <button
               id="btn-view-deck"
-              class="px-2 py-1 text-[10px] font-bold uppercase transition-all flex items-center gap-1 ${
+              class="px-2 py-1 text-[9px] xl:text-[10px] font-bold uppercase transition-all flex items-center gap-1 ${
                 state.viewMode === 'deck'
                   ? 'bg-[#1A1A1A] text-[#F4F1EA]'
                   : 'text-[#1A1A1A] hover:text-[#D43F3A]'
@@ -178,17 +215,11 @@ function renderHeader() {
             </button>
           </div>
 
-          <!-- Email tag (2xl:flex only) -->
-          <div class="hidden 2xl:flex items-center gap-1 px-2 py-1 bg-[#E8E4D9] border border-[#1A1A1A] text-[10px] font-mono shrink-0">
-            <i data-lucide="mail-check" class="w-3 h-3 text-[#D43F3A]"></i>
-            <span>11cheker11@gmail.com</span>
-          </div>
-
           <!-- Action Buttons -->
           <div class="flex items-center gap-1.5 shrink-0">
             <button
               id="btn-open-inbox"
-              class="px-2 py-1 border border-[#1A1A1A] bg-[#E8E4D9] hover:bg-[#1A1A1A] hover:text-[#F4F1EA] transition-all flex items-center gap-1 text-[10px]"
+              class="px-2 py-1 border border-[#1A1A1A] bg-[#E8E4D9] hover:bg-[#1A1A1A] hover:text-[#F4F1EA] transition-all flex items-center gap-1 text-[9px] xl:text-[10px]"
               title="View received messages log"
             >
               <i data-lucide="inbox" class="w-3 h-3 text-[#D43F3A]"></i>
@@ -197,32 +228,75 @@ function renderHeader() {
 
             <button
               id="btn-open-resume"
-              class="px-2.5 py-1 border border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-[#F4F1EA] transition-all flex items-center gap-1 text-[10px]"
+              class="px-2.5 py-1 border border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-[#F4F1EA] transition-all flex items-center gap-1 text-[9px] xl:text-[10px]"
             >
               <i data-lucide="file-text" class="w-3 h-3"></i>
-              <span>Resume CV</span>
+              <span>CV</span>
             </button>
 
             <button
               id="btn-open-consultation"
-              class="px-3 py-1 bg-[#D43F3A] text-white hover:bg-[#1A1A1A] transition-all flex items-center gap-1 text-[10px] shadow-[2px_2px_0px_0px_#1A1A1A]"
+              class="px-3 py-1 bg-[#D43F3A] text-white hover:bg-[#1A1A1A] transition-all flex items-center gap-1 text-[9px] xl:text-[10px] shadow-[2px_2px_0px_0px_#1A1A1A]"
             >
               <i data-lucide="calendar" class="w-3 h-3"></i>
-              <span>Contact Me</span>
+              <span>Contact</span>
             </button>
           </div>
         </div>
 
-        <!-- Mobile/Tablet Toggle Button (Visible on screens < lg) -->
-        <button id="btn-mobile-menu" class="lg:hidden p-1.5 sm:p-2 border border-[#1A1A1A] bg-[#E8E4D9] hover:bg-[#1A1A1A] hover:text-white transition-colors shrink-0">
-          <i data-lucide="${state.mobileMenuOpen ? 'x' : 'menu'}" class="w-5 h-5"></i>
-        </button>
+        <!-- Mobile Header Quick Links & Toggle -->
+        <div class="flex lg:hidden items-center gap-1.5 shrink-0">
+          <a
+            href="${PERSONAL_INFO.linkedin}"
+            target="_blank"
+            rel="noreferrer"
+            class="p-1.5 bg-[#E8E4D9] border border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors"
+            title="LinkedIn"
+          >
+            <i data-lucide="linkedin" class="w-4 h-4"></i>
+          </a>
+          <a
+            href="${PERSONAL_INFO.instagram}"
+            target="_blank"
+            rel="noreferrer"
+            class="p-1.5 bg-[#E8E4D9] border border-[#1A1A1A] text-[#D43F3A] hover:bg-[#D43F3A] hover:text-white transition-colors"
+            title="Instagram: @11_cheker_11"
+          >
+            <i data-lucide="instagram" class="w-4 h-4"></i>
+          </a>
+          <button id="btn-mobile-menu" class="p-1.5 sm:p-2 border border-[#1A1A1A] bg-[#E8E4D9] hover:bg-[#1A1A1A] hover:text-white transition-colors shrink-0">
+            <i data-lucide="${state.mobileMenuOpen ? 'x' : 'menu'}" class="w-5 h-5"></i>
+          </button>
+        </div>
 
       </div>
 
       <!-- Mobile Dropdown Drawer -->
       ${state.mobileMenuOpen ? `
         <div class="lg:hidden pt-3 pb-3 border-t-2 border-[#1A1A1A] mt-2 space-y-3 text-xs font-bold uppercase tracking-wider bg-[#F4F1EA] px-2">
+          
+          <!-- Direct Social Connections Grid -->
+          <div class="grid grid-cols-2 gap-2 p-2 bg-[#E8E4D9] border border-[#1A1A1A]">
+            <a
+              href="${PERSONAL_INFO.linkedin}"
+              target="_blank"
+              rel="noreferrer"
+              class="flex items-center justify-center gap-2 p-2 bg-[#F4F1EA] border border-[#1A1A1A] text-[11px] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors"
+            >
+              <i data-lucide="linkedin" class="w-4 h-4 text-[#D43F3A]"></i>
+              <span>LinkedIn Profile</span>
+            </a>
+            <a
+              href="${PERSONAL_INFO.instagram}"
+              target="_blank"
+              rel="noreferrer"
+              class="flex items-center justify-center gap-2 p-2 bg-[#F4F1EA] border border-[#1A1A1A] text-[11px] text-[#D43F3A] hover:bg-[#D43F3A] hover:text-white transition-colors"
+            >
+              <i data-lucide="instagram" class="w-4 h-4 text-[#D43F3A]"></i>
+              <span>@11_cheker_11</span>
+            </a>
+          </div>
+
           <!-- Nav Links -->
           <nav class="grid grid-cols-2 gap-2 pb-2 border-b border-[#1A1A1A]/20">
             <a href="#about" class="p-2 bg-[#E8E4D9] border border-[#1A1A1A] text-center hover:bg-[#1A1A1A] hover:text-white transition-colors">About</a>
@@ -311,6 +385,42 @@ function renderHeroSection() {
             `).join('')}
           </div>
 
+          <!-- Direct Social Networks Bar -->
+          <div class="p-3 bg-[#E8E4D9] border-2 border-[#1A1A1A] space-y-2">
+            <span class="text-[10px] font-mono font-bold text-[#D43F3A] uppercase tracking-widest block">
+              SOCIAL & CONTACT NETWORKS
+            </span>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-bold uppercase">
+              <a
+                href="${PERSONAL_INFO.linkedin}"
+                target="_blank"
+                rel="noreferrer"
+                class="p-2 bg-[#F4F1EA] border border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors flex items-center gap-2 text-[#1A1A1A]"
+              >
+                <i data-lucide="linkedin" class="w-4 h-4 text-[#D43F3A]"></i>
+                <span class="truncate">LinkedIn</span>
+              </a>
+              <a
+                href="${PERSONAL_INFO.instagram}"
+                target="_blank"
+                rel="noreferrer"
+                class="p-2 bg-[#F4F1EA] border border-[#1A1A1A] hover:bg-[#D43F3A] hover:text-white transition-colors flex items-center gap-2 text-[#D43F3A]"
+              >
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+                <span class="truncate">@11_cheker_11</span>
+              </a>
+              <a
+                href="${PERSONAL_INFO.github}"
+                target="_blank"
+                rel="noreferrer"
+                class="p-2 bg-[#F4F1EA] border border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors flex items-center gap-2 text-[#1A1A1A]"
+              >
+                <i data-lucide="github" class="w-4 h-4 text-[#D43F3A]"></i>
+                <span class="truncate">GitHub</span>
+              </a>
+            </div>
+          </div>
+
           <!-- Key Metrics Pills -->
           <div class="grid grid-cols-3 gap-2 sm:gap-3 pt-2 max-w-lg">
             <div class="p-2.5 sm:p-3 bg-[#E8E4D9] border border-[#1A1A1A] text-center">
@@ -328,7 +438,7 @@ function renderHeroSection() {
           </div>
 
           <!-- Hero CTAs -->
-          <div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-4">
+          <div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
             <button
               id="hero-btn-call"
               class="px-5 sm:px-6 py-3 bg-[#1A1A1A] text-[#F4F1EA] hover:bg-[#D43F3A] transition-all text-xs font-bold uppercase tracking-[0.2em] shadow-[4px_4px_0px_0px_#D43F3A] flex items-center gap-2"
@@ -345,13 +455,14 @@ function renderHeroSection() {
           </div>
         </div>
 
+        <!-- Profile Photo Frame - Uncropped on Mobile and Desktop -->
         <div class="lg:col-span-5 relative">
           <div class="border-2 border-[#1A1A1A] p-2 bg-[#E8E4D9] shadow-[8px_8px_0px_0px_#1A1A1A] lg:shadow-[12px_12px_0px_0px_#1A1A1A]">
             <img
               src="./profile.jpg"
               onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';"
               alt="Arina Chekotun — IT Developer, Founder & Web Designer"
-              class="w-full h-[380px] sm:h-[440px] object-cover border border-[#1A1A1A] photo-editorial-filter"
+              class="w-full h-[320px] xs:h-[380px] sm:h-[460px] lg:h-[500px] object-cover object-top border border-[#1A1A1A] photo-editorial-filter"
               referrerpolicy="no-referrer"
             />
             <div class="p-3 bg-[#F4F1EA] border-t border-[#1A1A1A] mt-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 text-[11px] sm:text-xs font-mono">
@@ -519,104 +630,279 @@ function renderSkillsSection() {
 }
 
 function renderProjectsSection() {
-  const categories = ['All', 'EdTech & Web', 'Startups & Innovation', 'AI & Chatbots', 'Design & Freelance'];
-  const filteredProjects = state.selectedCategory === 'All'
-    ? PROJECTS
-    : PROJECTS.filter(p => p.category === state.selectedCategory);
+  const categoriesToShow = state.selectedCategoryTab === 'all'
+    ? PROJECT_CATEGORIES_CONFIG
+    : PROJECT_CATEGORIES_CONFIG.filter(c => c.id === state.selectedCategoryTab);
 
   return `
     <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-8 py-12 border-b-2 border-[#1A1A1A]">
-      <div class="space-y-8">
+      <div class="space-y-10">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <span class="text-[10px] font-bold text-[#D43F3A] uppercase tracking-[0.2em] block">
-              03 • DEVELOPMENTS & FREELANCE
+        <!-- Section Header & Category Selector Tabs -->
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div class="space-y-2">
+            <span class="text-[10px] sm:text-xs font-bold text-[#D43F3A] uppercase tracking-[0.2em] block">
+              03 • FEATURED WORKS & PROJECTS (ПРИМЕРЫ РАБОТ)
             </span>
-            <h2 class="font-serif italic font-bold text-4xl sm:text-5xl text-[#1A1A1A]">
-              Featured Projects & Portfolio
+            <h2 class="font-serif italic font-bold text-3xl sm:text-5xl text-[#1A1A1A]">
+              GitHub Sites, Figma Designs & Startups
             </h2>
+            <p class="font-sans text-xs sm:text-sm text-[#1A1A1A]/80 max-w-2xl leading-relaxed">
+              Explore my projects divided into three dedicated categories. Use the carousel controls or click thumbnails to inspect each work. You can also add your own custom photos to <code class="bg-[#E8E4D9] px-1 font-mono text-[11px] border border-[#1A1A1A]">/public/projects/</code>.
+            </p>
           </div>
 
-          <!-- Category Filter Buttons -->
+          <!-- Category Selector Tabs -->
           <div class="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-wider">
-            ${categories.map(cat => `
+            <button
+              class="btn-category-tab px-3.5 py-2 border-2 border-[#1A1A1A] transition-all flex items-center gap-1.5 ${
+                state.selectedCategoryTab === 'all'
+                  ? 'bg-[#1A1A1A] text-white shadow-[3px_3px_0px_0px_#D43F3A]'
+                  : 'bg-[#E8E4D9] text-[#1A1A1A] hover:bg-[#D43F3A] hover:text-white'
+              }"
+              data-category="all"
+            >
+              <span>All 3 Categories</span>
+            </button>
+            ${PROJECT_CATEGORIES_CONFIG.map(cat => `
               <button
-                class="btn-project-filter px-3.5 py-1.5 border border-[#1A1A1A] transition-all ${
-                  state.selectedCategory === cat
-                    ? 'bg-[#1A1A1A] text-[#F4F1EA]'
+                class="btn-category-tab px-3.5 py-2 border-2 border-[#1A1A1A] transition-all flex items-center gap-1.5 ${
+                  state.selectedCategoryTab === cat.id
+                    ? 'bg-[#1A1A1A] text-white shadow-[3px_3px_0px_0px_#D43F3A]'
                     : 'bg-[#E8E4D9] text-[#1A1A1A] hover:bg-[#D43F3A] hover:text-white'
                 }"
-                data-category="${cat}"
+                data-category="${cat.id}"
               >
-                ${cat}
+                <i data-lucide="${cat.icon}" class="w-3.5 h-3.5"></i>
+                <span>${cat.title}</span>
               </button>
             `).join('')}
           </div>
         </div>
 
-        <!-- Projects Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          ${filteredProjects.map(proj => `
-            <div
-              class="btn-open-project group bg-[#E8E4D9] border-2 border-[#1A1A1A] shadow-[8px_8px_0px_0px_#1A1A1A] hover:shadow-[12px_12px_0px_0px_#D43F3A] transition-all cursor-pointer flex flex-col justify-between"
-              data-id="${proj.id}"
-            >
-              <div>
-                <div class="aspect-video w-full overflow-hidden border-b-2 border-[#1A1A1A] relative">
-                  <img
-                    src="${proj.image}"
-                    alt="${proj.title}"
-                    class="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-500"
-                    referrerpolicy="no-referrer"
-                  />
-                  <div class="absolute top-3 left-3 bg-[#1A1A1A] text-white text-[10px] font-bold uppercase tracking-[0.2em] px-2.5 py-1 border border-[#1A1A1A]">
-                    ${proj.category}
-                  </div>
-                </div>
+        <!-- Carousels for Selected Categories -->
+        <div class="space-y-16">
+          ${categoriesToShow.map(catConfig => {
+            const catProjects = PROJECTS.filter(p => p.category === catConfig.id);
+            if (!catProjects.length) return '';
 
-                <div class="p-6 space-y-4">
-                  <div>
-                    <span class="text-xs font-bold text-[#D43F3A] uppercase tracking-wider block">${proj.subtitle}</span>
-                    <h3 class="font-serif italic font-bold text-2xl text-[#1A1A1A] group-hover:text-[#D43F3A] transition-colors">
-                      ${proj.title}
-                    </h3>
-                  </div>
+            const activeIdx = state.carouselIndices[catConfig.id] || 0;
+            const currentProj = catProjects[activeIdx] || catProjects[0];
 
-                  <p class="font-sans text-xs text-[#1A1A1A]/80 leading-relaxed">
-                    ${proj.description}
-                  </p>
-
-                  <!-- Metrics Row -->
-                  <div class="grid grid-cols-3 gap-2 p-3 bg-[#F4F1EA] border border-[#1A1A1A]">
-                    ${proj.metrics.map(m => `
-                      <div class="text-center">
-                        <span class="font-serif italic font-bold text-lg text-[#D43F3A] block">${m.value}</span>
-                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#1A1A1A] block">${m.label}</span>
-                      </div>
-                    `).join('')}
-                  </div>
-
-                  <!-- Tech Tags -->
-                  <div class="flex flex-wrap gap-1.5 pt-2">
-                    ${proj.tags.map(t => `
-                      <span class="px-2 py-0.5 bg-[#F4F1EA] border border-[#1A1A1A] text-[10px] font-mono font-medium text-[#1A1A1A]">
-                        ${t}
+            return `
+              <div class="p-6 sm:p-8 bg-[#E8E4D9] border-2 border-[#1A1A1A] shadow-[10px_10px_0px_0px_#1A1A1A] space-y-6 relative">
+                
+                <!-- Category Banner Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-[#1A1A1A] pb-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-[#1A1A1A] text-[#F4F1EA] flex items-center justify-center border border-[#1A1A1A]">
+                      <i data-lucide="${catConfig.icon}" class="w-5 h-5 text-[#D43F3A]"></i>
+                    </div>
+                    <div>
+                      <span class="text-[10px] font-mono font-bold text-[#D43F3A] uppercase tracking-widest block">
+                        CATEGORY ${catConfig.badge}
                       </span>
+                      <h3 class="font-serif italic font-bold text-2xl text-[#1A1A1A]">
+                        ${catConfig.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-3">
+                    <span class="font-mono text-xs font-bold px-3 py-1 bg-[#F4F1EA] border border-[#1A1A1A] text-[#1A1A1A]">
+                      Project ${activeIdx + 1} of ${catProjects.length}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Featured Active Project Display -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                  
+                  <!-- Left: Interactive Image Showcase -->
+                  <div class="lg:col-span-7 flex flex-col justify-between space-y-3">
+                    <div
+                      class="btn-open-project relative aspect-video sm:aspect-[16/10] border-2 border-[#1A1A1A] bg-[#1A1A1A] overflow-hidden group cursor-pointer shadow-[4px_4px_0px_0px_#1A1A1A]"
+                      data-id="${currentProj.id}"
+                      title="Click to view full project breakdown"
+                    >
+                      <img
+                        src="${currentProj.image}"
+                        onerror="this.onerror=null; this.src='${currentProj.fallbackImage}';"
+                        alt="${currentProj.title}"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 photo-editorial-filter"
+                      />
+                      <div class="absolute top-3 left-3 px-2.5 py-1 bg-[#1A1A1A] text-[#F4F1EA] border border-[#1A1A1A] text-[10px] font-mono font-bold uppercase tracking-widest">
+                        ${currentProj.subtitle}
+                      </div>
+                      <div class="absolute bottom-3 right-3 px-3 py-1 bg-[#D43F3A] text-white text-[11px] font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_#1A1A1A] flex items-center gap-1">
+                        <span>Inspect Full Modal</span>
+                        <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                      </div>
+                    </div>
+
+                    <!-- Carousel Navigation Controls Bar -->
+                    <div class="flex items-center justify-between bg-[#F4F1EA] p-3 border border-[#1A1A1A]">
+                      <button
+                        class="btn-carousel-prev px-3.5 py-2 bg-[#1A1A1A] text-white hover:bg-[#D43F3A] text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-1"
+                        data-category="${catConfig.id}"
+                      >
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        <span>Previous</span>
+                      </button>
+
+                      <div class="flex items-center gap-1.5">
+                        ${catProjects.map((_, dotIdx) => `
+                          <button
+                            class="btn-carousel-dot w-3 h-3 border border-[#1A1A1A] transition-all ${
+                              activeIdx === dotIdx ? 'bg-[#D43F3A] w-6' : 'bg-[#E8E4D9] hover:bg-[#1A1A1A]'
+                            }"
+                            data-category="${catConfig.id}"
+                            data-index="${dotIdx}"
+                          ></button>
+                        `).join('')}
+                      </div>
+
+                      <button
+                        class="btn-carousel-next px-3.5 py-2 bg-[#1A1A1A] text-white hover:bg-[#D43F3A] text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-1"
+                        data-category="${catConfig.id}"
+                      >
+                        <span>Next Work</span>
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Right: Project Information & Action Buttons -->
+                  <div class="lg:col-span-5 bg-[#F4F1EA] p-6 border-2 border-[#1A1A1A] flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                      <div class="flex items-center justify-between border-b border-[#1A1A1A]/30 pb-2">
+                        <span class="text-[10px] font-mono font-bold text-[#D43F3A] uppercase tracking-widest">
+                          ${currentProj.subtitle}
+                        </span>
+                        <span class="text-[10px] font-mono text-[#1A1A1A]/60">
+                          ID: ${currentProj.id}
+                        </span>
+                      </div>
+
+                      <h4 class="font-serif italic font-bold text-2xl text-[#1A1A1A]">
+                        ${currentProj.title}
+                      </h4>
+
+                      <p class="font-sans text-xs text-[#1A1A1A]/85 leading-relaxed">
+                        ${currentProj.description}
+                      </p>
+
+                      <!-- Key Performance Metrics -->
+                      <div class="grid grid-cols-3 gap-2 p-3 bg-[#E8E4D9] border border-[#1A1A1A]">
+                        ${currentProj.metrics.map(m => `
+                          <div class="text-center">
+                            <span class="font-serif italic font-bold text-base text-[#D43F3A] block">${m.value}</span>
+                            <span class="text-[8px] font-bold uppercase tracking-wider text-[#1A1A1A] block">${m.label}</span>
+                          </div>
+                        `).join('')}
+                      </div>
+
+                      <!-- Tech Stack Tags -->
+                      <div class="flex flex-wrap gap-1.5 pt-1">
+                        ${currentProj.tags.map(t => `
+                          <span class="px-2 py-0.5 bg-[#E8E4D9] border border-[#1A1A1A] text-[10px] font-mono font-medium text-[#1A1A1A]">
+                            ${t}
+                          </span>
+                        `).join('')}
+                      </div>
+                    </div>
+
+                    <!-- External Links & Action Row -->
+                    <div class="space-y-2 pt-2 border-t border-[#1A1A1A]/20">
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        ${currentProj.githubUrl ? `
+                          <a
+                            href="${currentProj.githubUrl}"
+                            target="_blank"
+                            rel="noreferrer"
+                            class="px-3 py-2 bg-[#1A1A1A] text-white hover:bg-[#D43F3A] text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
+                          >
+                            <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                            <span>GitHub Repo</span>
+                          </a>
+                        ` : ''}
+
+                        ${currentProj.figmaUrl ? `
+                          <a
+                            href="${currentProj.figmaUrl}"
+                            target="_blank"
+                            rel="noreferrer"
+                            class="px-3 py-2 bg-[#1A1A1A] text-white hover:bg-[#D43F3A] text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
+                          >
+                            <i data-lucide="figma" class="w-3.5 h-3.5"></i>
+                            <span>Figma File</span>
+                          </a>
+                        ` : ''}
+
+                        ${currentProj.liveUrl ? `
+                          <a
+                            href="${currentProj.liveUrl}"
+                            target="_blank"
+                            rel="noreferrer"
+                            class="px-3 py-2 bg-[#D43F3A] text-white hover:bg-[#1A1A1A] text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors shadow-[2px_2px_0px_0px_#1A1A1A]"
+                          >
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            <span>Live Site</span>
+                          </a>
+                        ` : ''}
+
+                        <button
+                          class="btn-open-project px-3 py-2 border border-[#1A1A1A] bg-[#E8E4D9] hover:bg-[#1A1A1A] hover:text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
+                          data-id="${currentProj.id}"
+                        >
+                          <i data-lucide="info" class="w-3.5 h-3.5"></i>
+                          <span>Full Modal</span>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <!-- Category Thumbnail Strip -->
+                <div class="space-y-2 pt-2">
+                  <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#1A1A1A]/80">
+                    <span>${catConfig.title} — All ${catProjects.length} Works:</span>
+                    <span class="font-mono text-[11px] text-[#D43F3A]">Click any thumbnail to jump</span>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    ${catProjects.map((p, pIdx) => `
+                      <button
+                        class="btn-carousel-thumb text-left p-2 border-2 transition-all flex flex-col justify-between ${
+                          activeIdx === pIdx
+                            ? 'bg-[#1A1A1A] text-white border-[#1A1A1A] shadow-[4px_4px_0px_0px_#D43F3A]'
+                            : 'bg-[#F4F1EA] text-[#1A1A1A] border-[#1A1A1A] hover:bg-[#E8E4D9]'
+                        }"
+                        data-category="${catConfig.id}"
+                        data-index="${pIdx}"
+                      >
+                        <div class="aspect-video w-full overflow-hidden border border-[#1A1A1A] mb-2 bg-[#1A1A1A]">
+                          <img
+                            src="${p.image}"
+                            onerror="this.onerror=null; this.src='${p.fallbackImage}';"
+                            alt="${p.title}"
+                            class="w-full h-full object-cover photo-editorial-filter"
+                          />
+                        </div>
+                        <div class="space-y-0.5">
+                          <span class="text-[9px] font-mono font-bold block opacity-80">0${pIdx + 1} • ${p.subtitle}</span>
+                          <h5 class="font-serif italic font-bold text-xs truncate">${p.title}</h5>
+                        </div>
+                      </button>
                     `).join('')}
                   </div>
                 </div>
-              </div>
 
-              <div class="p-4 bg-[#F4F1EA] border-t-2 border-[#1A1A1A] flex items-center justify-between text-xs font-bold uppercase tracking-wider">
-                <span class="text-[#D43F3A] flex items-center gap-1">
-                  <span>View Project Details</span>
-                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                </span>
-                <span class="font-mono text-[#1A1A1A]/60">ID: ${proj.id}</span>
               </div>
-            </div>
-          `).join('')}
+            `;
+          }).join('')}
         </div>
 
       </div>
@@ -1540,11 +1826,57 @@ function attachEventListeners() {
     });
   });
 
-  // Project Category Filters
-  document.querySelectorAll('.btn-project-filter').forEach(btn => {
+  // Project Category Tab Filters
+  document.querySelectorAll('.btn-category-tab').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const cat = e.currentTarget.getAttribute('data-category');
-      state.selectedCategory = cat;
+      state.selectedCategoryTab = cat;
+      renderApp();
+    });
+  });
+
+  // Carousel Prev Button
+  document.querySelectorAll('.btn-carousel-prev').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const catId = e.currentTarget.getAttribute('data-category');
+      const catProjects = PROJECTS.filter(p => p.category === catId);
+      if (!catProjects.length) return;
+      const currentIdx = state.carouselIndices[catId] || 0;
+      const newIdx = (currentIdx - 1 + catProjects.length) % catProjects.length;
+      state.carouselIndices[catId] = newIdx;
+      renderApp();
+    });
+  });
+
+  // Carousel Next Button
+  document.querySelectorAll('.btn-carousel-next').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const catId = e.currentTarget.getAttribute('data-category');
+      const catProjects = PROJECTS.filter(p => p.category === catId);
+      if (!catProjects.length) return;
+      const currentIdx = state.carouselIndices[catId] || 0;
+      const newIdx = (currentIdx + 1) % catProjects.length;
+      state.carouselIndices[catId] = newIdx;
+      renderApp();
+    });
+  });
+
+  // Carousel Dot Jump
+  document.querySelectorAll('.btn-carousel-dot').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const catId = e.currentTarget.getAttribute('data-category');
+      const idx = parseInt(e.currentTarget.getAttribute('data-index'), 10);
+      state.carouselIndices[catId] = idx;
+      renderApp();
+    });
+  });
+
+  // Carousel Thumbnail Jump
+  document.querySelectorAll('.btn-carousel-thumb').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const catId = e.currentTarget.getAttribute('data-category');
+      const idx = parseInt(e.currentTarget.getAttribute('data-index'), 10);
+      state.carouselIndices[catId] = idx;
       renderApp();
     });
   });
