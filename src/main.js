@@ -11,21 +11,50 @@ import {
   RESUME_SLIDES
 } from './data.js';
 
-// Image extension fallback helper: automatically tries .png, .jpeg, .jpg, .JPG, .PNG, .JPEG, .webp
+// Image extension & GitHub repository fallback helper
 window.handleImgError = function(img, fallbackUrl) {
-  if (!img.dataset.origBase) {
+  if (!img.dataset.sources) {
     const currentSrc = img.getAttribute('src') || img.src;
     const cleanSrc = currentSrc.split('?')[0].split('#')[0];
     const lastDot = cleanSrc.lastIndexOf('.');
-    img.dataset.origBase = lastDot !== -1 ? cleanSrc.substring(0, lastDot) : cleanSrc;
-    img.dataset.extIdx = '0';
+    const base = lastDot !== -1 ? cleanSrc.substring(0, lastDot) : cleanSrc;
+    // Extract relative path like "projects/github_site_2" or "profile"
+    const relPath = base.replace(/^(https?:\/\/[^\/]+)?(\.\/|\/)?(public\/)?/, '');
+
+    const exts = ['.jpg', '.png', '.jpeg', '.JPG', '.PNG', '.JPEG', '.webp'];
+    const sources = [];
+
+    // Local relative paths
+    exts.forEach(ext => sources.push('./' + relPath + ext));
+    exts.forEach(ext => sources.push('./public/' + relPath + ext));
+
+    // GitHub raw repository fallback (cheker11/portfolio main branch)
+    exts.forEach(ext => {
+      sources.push(`https://raw.githubusercontent.com/cheker11/portfolio/main/public/${relPath}${ext}`);
+      sources.push(`https://raw.githubusercontent.com/cheker11/portfolio/main/${relPath}${ext}`);
+    });
+
+    img.dataset.sources = JSON.stringify(sources);
+    img.dataset.srcIdx = '0';
   }
-  const exts = ['.png', '.jpeg', '.jpg', '.JPG', '.PNG', '.JPEG', '.webp'];
-  let idx = parseInt(img.dataset.extIdx, 10);
-  if (idx < exts.length) {
-    const ext = exts[idx];
-    img.dataset.extIdx = (idx + 1).toString();
-    img.src = img.dataset.origBase + ext;
+
+  let sources;
+  try {
+    sources = JSON.parse(img.dataset.sources);
+  } catch (e) {
+    sources = [];
+  }
+
+  let idx = parseInt(img.dataset.srcIdx || '0', 10);
+
+  // Skip any candidate that is identical to current src that just failed
+  while (idx < sources.length && (img.src === sources[idx] || (sources[idx].startsWith('./') && img.src.endsWith(sources[idx].substring(1))))) {
+    idx++;
+  }
+
+  if (idx < sources.length) {
+    img.dataset.srcIdx = (idx + 1).toString();
+    img.src = sources[idx];
   } else {
     img.onerror = null;
     if (fallbackUrl) img.src = fallbackUrl;
