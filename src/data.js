@@ -174,7 +174,7 @@ export const PROJECTS = [
   // ----------------------------------------------------
   {
     id: "github-cs-platform",
-    title: "IT CS & Web Learning Platform",
+    title: "IT & Web Learning Platform",
     subtitle: "Interactive Educational Website",
     category: "github",
     categoryLabel: "GitHub Web Sites",
