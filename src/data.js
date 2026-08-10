@@ -249,13 +249,13 @@ export const PROJECTS = [
   // CATEGORY 2: FIGMA DESIGNS
   // ----------------------------------------------------
   {
-    id: "figma-edtech-ui",
-    title: "EdTech Learning Platform Design System",
+    id: "figma-platform-ui",
+    title: "Platform Design System",
     subtitle: "UI/UX Prototype & Layout Architecture",
     category: "figma",
     categoryLabel: "Figma Designs",
-    description: "Complete Figma design system and UI/UX layout for an interactive computer science learning platform.",
-    longDescription: "Crafted in Figma with component variants, auto-layout cards, custom iconography, and responsive grid guidelines for desktop and mobile devices.",
+    description: "Complete Figma design system and UI/UX layout for an mobile app.",
+    longDescription: "Crafted in Figma with component variants, auto-layout cards, custom iconography, and responsive grid guidelines for mobile devices.",
     image: "./projects/figma_design_1.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=1200&q=80",
     metrics: [
