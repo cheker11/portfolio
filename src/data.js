@@ -232,10 +232,10 @@ export const PROJECTS = [
     fallbackImage: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1200&q=80",
     metrics: [
       { label: "Language", value: "HTML|CSS" },
-      { label: "Platform", value: "JS" },
-      { label: "Focus", value: "Google Fonts" }
+      { label: "Focus", value: "JS" },
+      { label: "Additional tools", value: "Google Fonts" }
     ],
-    tags: ["Python", "Telegram API", "AI Instruments", "Automation"],
+    tags: ["HTML", "CSS", "JavaScript", "Google Fonts"],
     githubUrl: "https://github.com/cheker11",
     liveUrl: "https://github.com/cheker11",
     highlights: [
