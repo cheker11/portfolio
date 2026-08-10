@@ -221,19 +221,19 @@ export const PROJECTS = [
     ]
   },
   {
-    id: "github-python-bots",
-    title: "Python Automation & Telegram Bot Suite",
-    subtitle: "Smart Automation & Chat Systems",
+    id: "Key projects",
+    title: "Website Development",
+    subtitle: "Café website",
     category: "github",
     categoryLabel: "GitHub Web Sites",
-    description: "Custom Python bots and automation scripts for community management, SMM operations, and client interactions.",
+    description: "Development of a multi-page website with a classic design and all necessary information.",
     longDescription: "Developed to automate client communication and content pipelines. Features custom trigger logic, inline menus, and integration with AI generative models.",
     image: "./projects/github_site_3.jpg",
     fallbackImage: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1200&q=80",
     metrics: [
-      { label: "Language", value: "Python 3" },
-      { label: "Platform", value: "Telegram API" },
-      { label: "Focus", value: "Bot Automation" }
+      { label: "Language", value: "HTML|CSS" },
+      { label: "Platform", value: "JS" },
+      { label: "Focus", value: "Google Fonts" }
     ],
     tags: ["Python", "Telegram API", "AI Instruments", "Automation"],
     githubUrl: "https://github.com/cheker11",
